@@ -1,0 +1,36 @@
+﻿@model List<ImagenZapatilla>
+@{
+    int numregistros = 1;
+    int numeropagina = 1;
+    if (ViewData["REGISTROS"] != null)
+    {
+        numregistros = (int)ViewData["REGISTROS"];
+        numeropagina = (int)ViewData["POSICION"];
+    }
+}
+@if (Model != null)
+{
+        <h2>Imagen @numeropagina de @numregistros</h2> 
+
+        <ul class="list-group list-group-horizontal">
+            <li>
+                  <button class="list-group-item" onclick='miFuncion(1,@numregistros)'> Primero</button>           
+            </li>
+             <li>
+                  <button class="list-group-item" onclick='miFuncion(@numeropagina-1,@numregistros)'> Anterior</button>           
+            </li>
+             <li>
+                  <button class="list-group-item" onclick='miFuncion(@numeropagina+1,@numregistros)'> Siguiente</button>           
+            </li>
+             <li>
+                  <button class="list-group-item" onclick='miFuncion(@numregistros,@numregistros)'> Último</button>           
+            </li>
+
+         </ul>
+   @foreach(ImagenZapatilla img in @Model)
+        {
+            <img style="witdh:150px;height:150px" src="@img.Imagen"/>
+        }
+<hr/>
+<a asp-controller="Zapatillas" asp-action="Index">Volver al index</a>
+}

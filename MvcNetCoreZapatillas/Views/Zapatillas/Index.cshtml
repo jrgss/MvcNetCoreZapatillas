@@ -1,0 +1,12 @@
+﻿@model List<Zapatilla>
+<h1>Zapatillas</h1>
+
+<ul class="list-group">
+    @foreach(Zapatilla zapa in Model)
+    {
+         @*onclick='mostrarImagenes(@zapa.IdProducto)'*@
+        <li class="list-group-item">
+            <a asp-controller="Zapatillas" asp-action="Details" asp-route-idzapa="@zapa.IdProducto" class="btn btn-success">CORRECTO @zapa.Nombre</a>
+        </li>
+    }
+</ul>
